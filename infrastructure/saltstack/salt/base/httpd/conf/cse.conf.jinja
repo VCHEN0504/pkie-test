@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+    #TODO: Need to add pillar value to obtain correct IP or DNS A record and populate ServerName value below
+    ServerName 10.0.2.15
+    #TODO: Need to add a add pillar to obtain correct e-mail address for system admin(s)
+    ServerAdmin root@localhost
+    #WSGIScriptAlias / /var/www/html/cse/web/cse.wsgi
+
+    <Directory /var/www/html/cse/web>
+       # WSGIProcessGroup yourapplication
+       # WSGIApplicationGroup %{GLOBAL}
+       #TODO: Directive below is correct value httpd has a permission error.
+        #Order deny,allow
+        #Allow from all
+        require all granted
+    </Directory>
+    Alias /static /var/www/html/cse/web/static
+    <Directory /var/www/html/cse/web/static>
+        #Order allow,deny
+     #TODO: Directive below is correct value httpd has a permission error. Changed to require all granted.
+     #Allow from all
+     #TODO: This is a temp all granted. Need to investigate correct security posture.
+     require all granted
+    </Directory>
+</VirtualHost>

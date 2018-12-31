@@ -1,0 +1,6 @@
+# Managed by Salt - Do not edit locally.
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0, "/var/www/html/sisa/web")
+from index import app as application
